@@ -1,0 +1,12 @@
+@use "../mixin/mixin" as *;
+@use "../setting/setting" as *;
+
+
+.u-mt {
+  margin-top: var(--mt);
+  --mt: var(--mt-pc, 40px);
+
+  @include sp() {
+    --mt: var(--mt-sp, 20px);
+  }
+}

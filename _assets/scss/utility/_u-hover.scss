@@ -1,0 +1,18 @@
+@use "../mixin/mixin" as *;
+@use "../setting/setting" as *;
+
+.u-hover {
+  transition: .5s;
+  &.ptn02 {
+    &:hover {
+      @include pc() {
+        opacity: .9;
+      }
+    }
+  }
+  &:hover {
+    @include pc() {
+      opacity: .6;
+    }
+  }
+}

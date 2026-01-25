@@ -1,0 +1,334 @@
+@use "../mixin/mixin" as *;
+@use "../setting/setting" as *;
+/*------------------------------------------------------------------------------
+  reset PC
+------------------------------------------------------------------------------*/
+html,
+input,
+textarea,
+select,
+button {
+  font-family: "Zen Kaku Gothic New", "游ゴシック体", YuGothic, "游ゴシック",
+    "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.gothic {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ",
+    Meiryo, sans-serif;
+}
+.en {
+  font-family: "Bai Jamjuree";
+}
+
+//.mincho{
+//  font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+//}
+
+html {
+  color: #fff;
+  background: #fff;
+  // font-size: 16px;
+  line-height: 1.6;
+  word-break: break-all;
+  letter-spacing: 0.05em;
+
+  -webkit-appearance: none;
+  -webkit-text-size-adjust: 100%;
+
+  @include sp() {
+    font-size: min(vw(10), calc(600 / $vw_standard_width * 10px));
+  }
+
+  //【数値設定方法】vw(10,デザイン幅)
+  @include tab() {
+    font-size: vw(10, 1440);
+  }
+
+  // 【数値設定方法】min-width: デザイン幅　＋ 1px
+  @media screen and (min-width: 1441px){
+    font-size: 10px;
+  }
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  border: 0;
+  margin: 0;
+  vertical-align: top;
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+}
+
+input,
+select,
+textarea,
+button {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+@include placeholder(#ccc);
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: block;
+}
+
+.outer-block {
+  // min-width: 1240px;
+}
+
+.inner-block {
+  position: relative;
+  width: auto;
+  max-width: 900px;
+  padding: 0 20px;
+  @include min(1600) {
+    max-width: 1200px;
+  }
+  @include pc {
+    margin: 0 auto;
+  }
+}
+.inner-block02 {
+  position: relative;
+  width: auto;
+  max-width: 1310px;
+  padding: 0 20px;
+  padding-right: 70px;
+  @include min(1600) {
+    max-width: 1500px;
+  }
+  @include pc {
+    margin: 0 auto;
+  }
+}
+.inner-block03 {
+    position: relative;
+  width: auto;
+  max-width: 1240px;
+  padding: 0 20px;
+  @include min(1600) {
+    max-width: 1500px;
+  }
+  @include pc {
+    margin: 0 auto;
+  }
+}
+
+#wrapper {
+  position: relative;
+}
+
+dl,
+dt,
+dd {
+  padding: 0;
+  margin: 0;
+}
+
+@include pc {
+  .sp {
+    display: none !important;
+  }
+
+  a[href^="tel:"] {
+    pointer-events: none;
+  }
+
+  a,
+  a::before,
+  a::after,
+  button {
+    //transition: $transition01;
+  }
+}
+
+//独自font-family読み込み
+@font-face {
+  src: url(../font/ZenKakuGothicNew-Medium.woff) format("woff");
+  font-family: "Zen Kaku Gothic New";
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  src: url(../font/ZenKakuGothicNew-Bold.woff) format("woff");
+  font-family: "Zen Kaku Gothic New";
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  src: url(../font/ZenKakuGothicNew-Black.woff) format("woff");
+  font-family: "Zen Kaku Gothic New";
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  src: url(../font/BaiJamjuree-Bold.woff) format("woff");
+  font-family: "Bai Jamjuree";
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  src: url(../font/BaiJamjuree-SemiBold.woff) format("woff");
+  font-family: "Bai Jamjuree";
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  src: url(../font/BaiJamjuree-Medium.woff) format("woff");
+  font-family: "Bai Jamjuree";
+  font-weight: 500;
+  font-display: swap;
+}
+//@font-face {
+//  src: url(../font/NotoSansJP-Bold.woff) format("woff"),
+//    url(../font/NotoSansJP-Bold.otf) format("opentype");
+//  font-family: "Noto Sans JP";
+//  font-weight: 700;
+//  font-display: swap;
+//}
+//@font-face {
+//  src: url(../font/NotoSerifJP-Medium.woff) format("woff"),
+//    url(../font/NotoSerifJP-Medium.otf) format("opentype");
+//  font-family: "Noto Serif JP";
+//  font-weight: 500;
+//  font-display: swap;
+//}
+//@font-face {
+//  src: url(../font/NotoSerifJP-Bold.woff) format("woff"),
+//    url(../font/NotoSerifJP-Bold.otf) format("opentype");
+//  font-family: "Noto Serif JP";
+//  font-weight: 700;
+//  font-display: swap;
+//}
+
+//.serif {
+//  font-family: "Noto Serif JP", serif;
+//}
+
+//SVGスプライトリセットCSS
+.c-svg {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: top;
+}
+
+/*------------------------------------------------------------------------------
+  reset SP
+------------------------------------------------------------------------------*/
+@include sp {
+  body {
+    font-size: 14px;
+    position: relative;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .outer-block {
+    min-width: 320px;
+  }
+
+  .inner-block {
+    padding: 0 10px;
+    width: auto;
+  }
+  .inner-block02 {
+    padding: 0 10px;
+    width: auto;
+  }
+  .inner-block03 {
+    padding: 0 10px;
+    width: auto;
+  }
+
+  #wrapper {
+    min-width: 320px;
+    position: relative;
+    overflow: clip;
+  }
+
+  input[type="submit"] {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .pc {
+    display: none !important;
+  }
+}
