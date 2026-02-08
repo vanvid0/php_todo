@@ -24,5 +24,9 @@ $todos = $stmt->fetchAll();
       <?php endforeach; ?>
     <?php endif; ?>
   </ul>
+
+  <form action="create.php" method="post">
+    <input type="text" name="title" placeholder="やることを入力" required>
+    <button type="submit">追加</button>
 </body>
 </html>
