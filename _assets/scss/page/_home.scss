@@ -5,3 +5,126 @@
 @use '../mixin/mixin' as *;
 @use '../setting/setting' as *;
 
+.p_home {}
+
+.p_home {
+  &__ttl {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #5bd;
+    text-align: center;
+  }
+  &__btn {
+    background-color: #5bd;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  &__delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 1rem;
+    min-width: 4rem;
+  }
+  &__add {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 70%;
+    margin-right: 1rem;
+  }
+  &__txt {
+    margin: 0;
+    margin-left: 0.5rem;
+    font-size: 2rem;
+  }
+  &__checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  &__checkbox {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    opacity: 0;
+
+    &:checked + .p_home__checkbox-ui {
+      border-color: #5bd;
+      background-color: #5bd;
+    }
+    &:checked + .p_home__checkbox-ui::after {
+      transform: translate(-50%, -56%) rotate(45deg) scale(1);
+    }
+    &:focus-visible + .p_home__checkbox-ui {
+      outline: 2px solid #1b6cff;
+      outline-offset: 2px;
+    }
+  }
+  &__checkbox-ui {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #8ea2ad;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0.7rem;
+      height: 1.3rem;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: translate(-50%, -56%) rotate(45deg) scale(0);
+      transform-origin: center;
+      transition: transform 0.15s ease;
+    }
+  }
+  &__formWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+  }
+  &__ttlWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__list {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    &+& {
+      margin-top: 2rem;
+    }
+    @include sp {
+      grid-template-columns: 1fr;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+
+.p_home-sec01 {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}

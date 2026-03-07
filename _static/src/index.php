@@ -12,40 +12,65 @@ $todos = $stmt->fetchAll();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo アプリ</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <title>やることリストver1.0.0</title>
 </head>
 
 <body>
-  <h1>Todo アプリ</h1>
-  <ul class="p_home__list">
-    <?php if (empty($todos)): ?>
-      <li>まだTodoがありません</li>
-    <?php else: ?>
-      <?php foreach ($todos as $todo): ?>
-        <li class="<?= $todo['is_done'] ? 'done' : '' ?>">
+  <main class="p_home">
+    <section class="p_home-sec01">
+      <div class="inner-block">
+        <div class="p_home__ttlWrap">
+          <h1 class="p_home__ttl">やることリストver1.0.0</h1>
+        </div>
 
-          <form action="toggle.php" method="get" style="display:inline;">
-            <input
-              type="checkbox"
-              name="id"
-              value="<?= $todo['id'] ?>"
-              onchange="this.form.submit()"
-              <?= $todo['is_done'] ? 'checked' : '' ?>>
+        <div class="p_home__formWrap">
+          <form action="create.php" method="post">
+            <input class="p_home__add" type="text" name="title" placeholder="やることを入力" required>
+            <button class="p_home__btn" type="submit">追加</button>
           </form>
+        </div>
 
-          <?= htmlspecialchars($todo['title'], ENT_QUOTES, 'UTF-8'); ?>
+        <ul class="p_home__list">
+          <?php if (empty($todos)): ?>
+            <li>
+              <p class="p_home__list-txt">やることないです。</p>
+            </li>
+          <?php else: ?>
+            <?php foreach ($todos as $todo): ?>
+              <li class="p_home__item <?= $todo['is_done'] ? 'done' : '' ?>">
 
-          <a href="delete.php?id=<?= $todo['id'] ?>">削除</a>
+                <form action="toggle.php" method="get" style="display:inline;">
+                  <label class="p_home__checkbox-label">
+                    <input
+                      class="p_home__checkbox"
+                      type="checkbox"
+                      name="id"
+                      value="<?= $todo['id'] ?>"
+                      onchange="this.form.submit()"
+                      <?= $todo['is_done'] ? 'checked' : '' ?>>
+                    <span class="p_home__checkbox-ui" aria-hidden="true"></span>
+                  </label>
+                </form>
 
-        </li>
-      <?php endforeach; ?>
-    <?php endif; ?>
-  </ul>
+                <p class="p_home__txt"><?= htmlspecialchars($todo['title'], ENT_QUOTES, 'UTF-8'); ?></p>
 
-  <form action="create.php" method="post">
-    <input type="text" name="title" placeholder="やることを入力" required>
-    <button type="submit">追加</button>
-  </form>
+                <a class="p_home__delete-btn" href="delete.php?id=<?= $todo['id'] ?>">削除</a>
+
+              </li>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </ul>
+
+
+      </div>
+    </section>
+
+  </main>
+
 </body>
+<script src="/js/lib/jquery-3.7.1.min.js"></script>
+<script src="/js/lib/ztext.min.js"></script>
+<script src="/js/common.js"></script>
 
 </html>
