@@ -21,13 +21,15 @@ $todos = $stmt->fetchAll();
     <section class="p_home-sec01">
       <div class="inner-block">
         <div class="p_home__ttlWrap">
-          <h1 class="p_home__ttl">やることリストver1.0.0</h1>
+          <h1 class="p_home__ttl">やることリスト<br class="sp">ver1.0.0</h1>
         </div>
 
         <div class="p_home__formWrap">
           <form action="create.php" method="post">
-            <input class="p_home__add" type="text" name="title" placeholder="やることを入力" required>
-            <button class="p_home__btn" type="submit">追加</button>
+            <div class="p_home_flex-box">
+              <input class="p_home__add" type="text" name="title" placeholder="やることを入力" required>
+              <button class="p_home__btn" type="submit">追加</button>
+            </div>
           </form>
         </div>
 
@@ -40,16 +42,16 @@ $todos = $stmt->fetchAll();
             <?php foreach ($todos as $todo): ?>
               <li class="p_home__item <?= $todo['is_done'] ? 'done' : '' ?>">
 
-                <form action="toggle.php" method="get" style="display:inline;">
+                <form action="toggle.php" method="post" style="display:inline;">
+                  <input type="hidden" name="id" value="<?= $todo['id'] ?>">
+
                   <label class="p_home__checkbox-label">
                     <input
                       class="p_home__checkbox"
                       type="checkbox"
-                      name="id"
-                      value="<?= $todo['id'] ?>"
                       onchange="this.form.submit()"
                       <?= $todo['is_done'] ? 'checked' : '' ?>>
-                    <span class="p_home__checkbox-ui" aria-hidden="true"></span>
+                    <span class="p_home__checkbox-ui"></span>
                   </label>
                 </form>
 

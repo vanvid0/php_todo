@@ -7,6 +7,12 @@
 
 .p_home {}
 
+.p_home_flex-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .p_home {
   &__ttl {
     font-size: 5rem;
@@ -22,6 +28,9 @@
     font-size: 2rem;
     border-radius: 4px;
     cursor: pointer;
+    @include sp {
+      font-size: 1.6rem;
+    }
   }
   &__delete-btn {
     background-color: #e74c3c;
@@ -33,23 +42,28 @@
     cursor: pointer;
     margin-left: 1rem;
     min-width: 4rem;
+    align-self: flex-end;
   }
   &__add {
     padding: 0.5rem;
     font-size: 2rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 70%;
-    margin-right: 1rem;
+    width: auto;
+    flex: 1;
+    min-width: 0;
   }
   &__txt {
     margin: 0;
     margin-left: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
+      @include sp {
+        font-size: 1.6rem;
+      }
   }
   &__checkbox-label {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
   }
   &__checkbox {
@@ -74,6 +88,10 @@
     position: relative;
     width: 2rem;
     height: 2rem;
+    flex-shrink: 0;
+    @include pc {
+      margin-top: 0.6rem;
+    }
     border: 2px solid #8ea2ad;
     border-radius: 6px;
     background-color: #fff;
@@ -119,7 +137,7 @@
   }
   &__item {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
   }
 }

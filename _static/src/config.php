@@ -1,7 +1,7 @@
 <?php
 return [
-    'host' => 'localhost',
-    'dbname' => 'todo_app',
-    'user' => 'your_user',
-    'pass' => 'your_password',
+    'host' => 'mysql3114.db.sakura.ne.jp',
+    'dbname' => 'mt15-labo_mt15_test01',
+    'user' => 'mt15-labo_mt15_test01',
+    'pass' => 'K9vL_Sapy',
 ];

@@ -2,20 +2,14 @@
 
 require 'db.php';
 
-$id = (int)($_GET['id'] ?? 0);
+$id = (int)($_POST['id'] ?? 0);
 
 if ($id > 0) {
 
-    $sql = "
-        UPDATE todos
-        SET is_done = NOT is_done
-        WHERE id = :id
-    ";
+    $sql = "UPDATE todos SET is_done = IF(is_done = 1, 0, 1) WHERE id = :id";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':id' => $id
-    ]);
+    $stmt->execute([':id' => $id]);
 }
 
 header('Location: index.php');
