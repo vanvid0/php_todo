@@ -9,3 +9,4 @@ _server/wp/wp-content/themes/*/img/
 #_server/wp/wp-content/themes/hoge/css/
 #_server/wp/wp-content/themes/hoge/font/
 #_server/wp/wp-content/themes/hoge/js/
+_static/src/config.php
